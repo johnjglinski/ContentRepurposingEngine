@@ -1,0 +1,5 @@
+*.log
+local.settings.json
+bin/
+obj/
+node_modules/

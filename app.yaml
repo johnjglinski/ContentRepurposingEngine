@@ -1,0 +1,83 @@
+# DigitalOcean App Platform Specification
+# Content Repurposing Engine - Next.js 14 Deployment
+# https://www.digitalocean.com/docs/app-platform/
+#
+# NOTE: Deployed as a SERVICE (not static site) because Next.js 14 App Router
+# with 'use client' components does not generate proper HTML files with output:'export'.
+# Running as a service ensures all routes, API endpoints, and SSR work correctly.
+
+name: content-repurposing-engine
+region: nyc
+
+services:
+  - name: frontend
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    run_command: npm start
+    git:
+      branch: main
+      repo_clone_spec: github/<YOUR_GITHUB_USERNAME>/ContentRepurposingEngine
+    build_command: npm ci && npm run build
+    health_check:
+      http_path: /
+    envs:
+      # ----- Appwrite Configuration (Required) -----
+      - key: NEXT_PUBLIC_APPWRITE_ENDPOINT
+        scope: RUN_AND_BUILD_TIME
+        value: "https://sfo.cloud.appwrite.io/v1"
+        type: GENERAL
+      - key: NEXT_PUBLIC_APPWRITE_PROJECT_ID
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+      # ----- App URL (Update after deployment with actual DO domain) -----
+      - key: NEXT_PUBLIC_APP_URL
+        scope: RUN_AND_BUILD_TIME
+        value: "https://content-repurposing-engine.ondigitalocean.app"
+        type: GENERAL
+      # ----- Stripe Configuration (Required for payments) -----
+      - key: NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+      - key: STRIPE_SECRET_KEY
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+      - key: STRIPE_WEBHOOK_SECRET
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+      # ----- Stripe Price IDs -----
+      - key: STRIPE_BASIC_PRICE_ID
+        scope: RUN_AND_BUILD_TIME
+        type: GENERAL
+      - key: STRIPE_PRO_PRICE_ID
+        scope: RUN_AND_BUILD_TIME
+        type: GENERAL
+      - key: STRIPE_AGENCY_PRICE_ID
+        scope: RUN_AND_BUILD_TIME
+        type: GENERAL
+      # ----- SendGrid Configuration (For email) -----
+      - key: SENDGRID_SID
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+      - key: SENDGRID_SECRET
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+      - key: FROM_EMAIL
+        scope: RUN_AND_BUILD_TIME
+        value: "noreply@contentrepurposing.com"
+        type: GENERAL
+      # ----- LM Studio Configuration (For AI processing) -----
+      - key: LM_STUDIO_URL
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+      - key: LM_STUDIO_MODEL
+        scope: RUN_AND_BUILD_TIME
+        value: "local-model"
+        type: GENERAL
+      # ----- SimpleAnalytics ID (Optional) -----
+      - key: NEXT_PUBLIC_ANALYTICS_ID
+        scope: RUN_AND_BUILD_TIME
+        type: GENERAL
+      # ----- Appwrite API Key (Server-side, for API routes) -----
+      - key: APPWRITE_API_KEY
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET

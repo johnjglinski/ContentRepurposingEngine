@@ -11,5 +11,22 @@
   "extensionBundle": {
     "id": "Microsoft.Azure.Functions.ExtensionBundle",
     "version": "[4.0.0, 5.0.0)"
-  }
+  },
+  "cors": {
+    "enabled": true,
+    "allowedOrigins": [
+      "https://*.github.io",
+      "http://localhost:3000"
+    ],
+    "allowedMethods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    "allowedHeaders": ["Content-Type", "Authorization", "x-functions-key"]
+  },
+  "extension": {
+    "http": {
+      "routePrefix": "api",
+      "maxOutstandingRequests": 200,
+      "maxConcurrentRequests": 100
+    }
+  },
+  "functionTimeout": "00:05:00"
 }

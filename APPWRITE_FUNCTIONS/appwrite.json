@@ -1,0 +1,69 @@
+{
+  "projectId": "content-repurposing-engine",
+  "projectName": "Content Repurposing Engine",
+  "functions": [
+    {
+      "id": "generate-posts",
+      "name": "Generate Posts",
+      "runtime": "node-18.0",
+      "path": "generate-posts",
+      "entrypoint": "src/main.js",
+      "execute": ["any"],
+      "events": [],
+      "schedule": "",
+      "timeout": 30,
+      "vars": {
+        "LM_STUDIO_URL": "http://localhost:1234/v1",
+        "LM_STUDIO_MODEL": "local-model",
+        "SENDGRID_SID": "",
+        "SENDGRID_SECRET": "",
+        "FROM_EMAIL": "noreply@contentrepurposing.com"
+      }
+    },
+    {
+      "id": "send-email",
+      "name": "Send Email",
+      "runtime": "node-18.0",
+      "path": "send-email",
+      "entrypoint": "src/main.js",
+      "execute": ["any"],
+      "events": [],
+      "schedule": "",
+      "timeout": 30,
+      "vars": {
+        "SENDGRID_SID": "",
+        "SENDGRID_SECRET": "",
+        "FROM_EMAIL": "noreply@contentrepurposing.com"
+      }
+    },
+    {
+      "id": "webhooks-stripe",
+      "name": "Stripe Webhooks",
+      "runtime": "node-18.0",
+      "path": "webhooks-stripe",
+      "entrypoint": "src/main.js",
+      "execute": ["any"],
+      "events": [],
+      "schedule": "",
+      "timeout": 30,
+      "vars": {
+        "STRIPE_SECRET_KEY": "",
+        "STRIPE_WEBHOOK_SECRET": ""
+      }
+    },
+    {
+      "id": "create-checkout-session",
+      "name": "Create Checkout Session",
+      "runtime": "node-18.0",
+      "path": "create-checkout-session",
+      "entrypoint": "src/main.js",
+      "execute": ["any"],
+      "events": [],
+      "schedule": "",
+      "timeout": 30,
+      "vars": {
+        "STRIPE_SECRET_KEY": ""
+      }
+    }
+  ]
+}

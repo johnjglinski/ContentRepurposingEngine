@@ -2,9 +2,12 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
-  distDir: 'out',
+  distDir: '.next-out',
   images: {
     unoptimized: true
+  },
+  experimental: {
+    optimizePackageImports: ['lucide-react']
   }
 }
 

@@ -1,0 +1,17 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "LM_STUDIO_URL": "http://localhost:1234/v1",
+    "LM_STUDIO_MODEL": "local-model",
+    "SENDGRID_SID": "your_sendgrid_sid_here",
+    "SENDGRID_SECRET": "your_sendgrid_secret_here",
+    "FROM_EMAIL": "noreply@contentrepurposing.com"
+  },
+  "Host": {
+    "LocalHttpPort": 7071,
+    "CORS": "*",
+    "CORSCredentials": true
+  }
+}

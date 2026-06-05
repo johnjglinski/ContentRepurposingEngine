@@ -1,0 +1,11 @@
+{
+  "name": "generate-posts",
+  "version": "1.0.0",
+  "description": "Appwrite function to generate social media posts using LM Studio AI",
+  "main": "src/main.js",
+  "type": "module",
+  "dependencies": {
+    "node-appwrite": "^12.0.0",
+    "openai": "^4.20.1"
+  }
+}

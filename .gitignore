@@ -3,3 +3,16 @@ node_modules
 out
 .env*.local
 .DS_Store
+
+# Stripe config (contains price IDs generated per environment)
+STRIPE_CONFIG.json
+
+# Azure Functions local settings
+AZURE_FUNCTIONS_API/local.settings.json
+
+# DigitalOcean deployment configs (contain secret references)
+.env.digitalocean
+.do/
+
+# Build output
+.next-out

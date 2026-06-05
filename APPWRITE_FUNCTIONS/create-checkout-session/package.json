@@ -1,0 +1,10 @@
+{
+  "name": "create-checkout-session",
+  "version": "1.0.0",
+  "description": "Appwrite function to create Stripe checkout sessions",
+  "main": "src/main.js",
+  "type": "module",
+  "dependencies": {
+    "node-appwrite": "^12.0.0"
+  }
+}

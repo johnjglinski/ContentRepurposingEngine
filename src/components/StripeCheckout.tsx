@@ -5,12 +5,15 @@ import { loadStripe } from '@stripe/stripe-js'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '')
 
+// Price IDs are NOT secrets — they're safe to embed in client code.
+// The server-side route (create-checkout-session) validates against ALLOWED_PRICE_IDS.
+// UPDATE these after creating products in Stripe Dashboard.
 const PRICES = {
-  BASIC: 'price_1YourBasicPriceId',
-  PRO: 'price_1YourProPriceId',
-  AGENCY: 'price_1YourAgencyPriceId'
+  BASIC: 'price_1YourBasicPriceId',    // $9.99/month — replace with real Stripe price ID
+  PRO: 'price_1YourProPriceId',        // $19.99/month — replace with real Stripe price ID
+  AGENCY: 'price_1YourAgencyPriceId'   // $49.99/month — replace with real Stripe price ID
 }
 
 const pricingPlans = [
@@ -57,8 +60,15 @@ export default function StripeCheckout() {
 
       const session = await response.json()
 
-      const stripe = await stripePromise
-      await stripe.redirectToCheckout({ sessionId: session.id })
+      if (session.url) {
+        window.location.href = session.url
+      } else if (session.id) {
+        const stripe = await stripePromise
+        if (stripe) {
+          // @ts-ignore - redirectToCheckout exists at runtime
+          await stripe.redirectToCheckout({ sessionId: session.id })
+        }
+      }
     } catch (error) {
       console.error('Error creating checkout session:', error)
     } finally {

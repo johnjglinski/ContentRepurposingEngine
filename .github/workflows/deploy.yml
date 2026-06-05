@@ -3,11 +3,19 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -22,11 +30,36 @@ jobs:
       run: npm ci
     
     - name: Build application
+      env:
+        NEXT_PUBLIC_APP_URL: ${{ secrets.NEXT_PUBLIC_APP_URL || 'https://<your-username>.github.io/ContentRepurposingEngine' }}
+        LM_STUDIO_URL: ${{ secrets.LM_STUDIO_URL || 'http://localhost:1234/v1' }}
+        LM_STUDIO_MODEL: ${{ secrets.LM_STUDIO_MODEL || 'local-model' }}
+        NEXT_PUBLIC_APPWRITE_ENDPOINT: ${{ secrets.NEXT_PUBLIC_APPWRITE_ENDPOINT }}
+        NEXT_PUBLIC_APPWRITE_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_APPWRITE_PROJECT_ID }}
+        APPWRITE_API_KEY: ${{ secrets.APPWRITE_API_KEY }}
+        NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}
+        STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+        STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
+        STRIPE_BASIC_PRICE_ID: ${{ secrets.STRIPE_BASIC_PRICE_ID }}
+        STRIPE_PRO_PRICE_ID: ${{ secrets.STRIPE_PRO_PRICE_ID }}
+        STRIPE_AGENCY_PRICE_ID: ${{ secrets.STRIPE_AGENCY_PRICE_ID }}
+        SENDGRID_SID: ${{ secrets.SENDGRID_SID }}
+        SENDGRID_SECRET: ${{ secrets.SENDGRID_SECRET }}
+        FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
       run: npm run build
     
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./out
-        cname: yourdomain.com
+        path: ./.next-out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
