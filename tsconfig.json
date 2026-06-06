@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "target": "ES2017",
     "lib": [
       "dom",
       "dom.iterable",
@@ -30,13 +31,14 @@
   },
   "include": [
     "next-env.d.ts",
-    "out/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".next-out/types/**/*.ts"
+    ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "DigitalProductStore/**/*",
+    "ResumeScannerSaaS/**/*",
+    "EmergencyIncomeSystems/**/*"
   ]
 }

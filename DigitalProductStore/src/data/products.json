@@ -1,0 +1,87 @@
+[
+  {
+    "id": "social-media-prompts",
+    "name": "30 AI Prompts for Social Media Managers",
+    "price": 700,
+    "displayPrice": "$7",
+    "stripePriceIdEnv": "NEXT_PUBLIC_STORE_SOCIAL_PROMPTS_PRICE_ID",
+    "description": "Ready-to-copy prompts that generate engaging social posts for Instagram, Twitter, LinkedIn, and TikTok. Save hours of content planning.",
+    "features": [
+      "30 battle-tested AI prompts",
+      "Platform-specific templates (IG, X, LinkedIn, TikTok)",
+      "Engagement-boosting prompt formulas",
+      "Bonus: Hashtag strategy guide"
+    ],
+    "category": "AI Prompts",
+    "file": "/products/social-media-prompts.pdf",
+    "badge": "Bestseller"
+  },
+  {
+    "id": "content-calendar-template",
+    "name": "Content Calendar Template (Notion + Excel)",
+    "price": 900,
+    "displayPrice": "$9",
+    "stripePriceIdEnv": "NEXT_PUBLIC_STORE_CALENDAR_TEMPLATE_PRICE_ID",
+    "description": "Plug-and-play content calendar that organizes your entire month of content in minutes. Works with Notion or Excel.",
+    "features": [
+      "Notion template (ready to duplicate)",
+      "Excel version included",
+      "30-day pre-built content framework",
+      "Content batching workflow guide"
+    ],
+    "category": "Templates",
+    "file": "/products/content-calendar-template.zip",
+    "badge": null
+  },
+  {
+    "id": "freelancer-rate-calculator",
+    "name": "Freelancer Rate Calculator + Contract Template",
+    "price": 1200,
+    "displayPrice": "$12",
+    "stripePriceIdEnv": "NEXT_PUBLIC_STORE_RATE_CALCULATOR_PRICE_ID",
+    "description": "Know exactly what to charge. Includes a smart rate calculator spreadsheet and a professional contract template.",
+    "features": [
+      "Interactive rate calculator (Excel/Sheets)",
+      "Industry benchmark data included",
+      "Professional freelance contract template",
+      "Scope-of-work checklist"
+    ],
+    "category": "Business Tools",
+    "file": "/products/freelancer-rate-calculator.zip",
+    "badge": "Premium"
+  },
+  {
+    "id": "side-hustle-prompts",
+    "name": "Side Hustle Idea Generator (50 Prompts)",
+    "price": 700,
+    "displayPrice": "$7",
+    "stripePriceIdEnv": "NEXT_PUBLIC_STORE_SIDE_HUSTLE_PROMPTS_PRICE_ID",
+    "description": "AI-powered prompts that generate personalized side hustle ideas based on your skills, schedule, and income goals.",
+    "features": [
+      "50 unique side hustle discovery prompts",
+      "Skill-matching prompt framework",
+      "Income projection calculator prompts",
+      "Risk assessment templates"
+    ],
+    "category": "AI Prompts",
+    "file": "/products/side-hustle-prompts.pdf",
+    "badge": null
+  },
+  {
+    "id": "resume-builder-pack",
+    "name": "Resume Builder Prompt Pack",
+    "price": 900,
+    "displayPrice": "$9",
+    "stripePriceIdEnv": "NEXT_PUBLIC_STORE_RESUME_BUILDER_PRICE_ID",
+    "description": "AI prompts that help you craft ATS-optimized resumes. Includes section-by-section prompt templates for any industry.",
+    "features": [
+      "Section-specific resume prompts (summary, experience, skills)",
+      "ATS optimization keyword prompts",
+      "Industry-tailored examples (tech, healthcare, finance)",
+      "Cover letter prompt bonus"
+    ],
+    "category": "Career Tools",
+    "file": "/products/resume-builder-pack.pdf",
+    "badge": null
+  }
+]

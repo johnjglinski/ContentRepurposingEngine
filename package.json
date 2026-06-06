@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    "build": "cross-env NEXT_TELEMETRY_DISABLED=1 next build --no-lint",
-    "build:clean": "rimraf .next-out && cross-env NEXT_TELEMETRY_DISABLED=1 next build",
+    "build": "cross-env NEXT_TELEMETRY_DISABLED=1 next build",
+    "build:clean": "rimraf .next && cross-env NEXT_TELEMETRY_DISABLED=1 next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -20,7 +20,7 @@
     "clsx": "^2.0.0",
     "dotenv": "^16.3.1",
     "lucide-react": "^0.294.0",
-    "next": "14.0.4",
+    "next": "14.2.25",
     "node-appwrite": "^26.0.0",
     "nodemailer": "^6.9.7",
     "openai": "^4.20.1",
@@ -35,7 +35,7 @@
   "devDependencies": {
     "cross-env": "^10.1.0",
     "eslint": "^8",
-    "eslint-config-next": "14.0.4",
+    "eslint-config-next": "14.2.25",
     "rimraf": "^6.1.3"
   }
 }

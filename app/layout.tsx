@@ -6,8 +6,8 @@ import SimpleAnalytics from './SimpleAnalytics'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Content Repurposing Engine | Dashboard',
-  description: 'Transform your blog posts into optimized social media content automatically',
+  title: 'J3C Family Studio - AI-Powered Tools for Creators & Professionals',
+  description: 'AI-powered tools for content creators and professionals. Content repurposing, digital product store, and resume scanning SaaS.',
 }
 
 export default function RootLayout({

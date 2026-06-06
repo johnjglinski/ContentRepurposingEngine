@@ -8,12 +8,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '')
 
 // Price IDs are NOT secrets — they're safe to embed in client code.
-// The server-side route (create-checkout-session) validates against ALLOWED_PRICE_IDS.
-// UPDATE these after creating products in Stripe Dashboard.
+// The server-side route (create-checkout-session) validates against env-configured price IDs.
+// These are loaded from environment variables at build time.
 const PRICES = {
-  BASIC: 'price_1YourBasicPriceId',    // $9.99/month — replace with real Stripe price ID
-  PRO: 'price_1YourProPriceId',        // $19.99/month — replace with real Stripe price ID
-  AGENCY: 'price_1YourAgencyPriceId'   // $49.99/month — replace with real Stripe price ID
+  BASIC: process.env.NEXT_PUBLIC_STRIPE_BASIC_PRICE_ID || 'price_basic_placeholder',
+  PRO: process.env.NEXT_PUBLIC_STRIPE_PRO_PRICE_ID || 'price_pro_placeholder',
+  AGENCY: process.env.NEXT_PUBLIC_STRIPE_AGENCY_PRICE_ID || 'price_agency_placeholder',
 }
 
 const pricingPlans = [
@@ -45,10 +45,12 @@ const pricingPlans = [
 
 export default function StripeCheckout() {
   const [isProcessing, setIsProcessing] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleCheckout = async (priceId: string) => {
     setIsProcessing(true)
-    
+    setError(null)
+
     try {
       const response = await fetch('/api/create-checkout-session', {
         method: 'POST',
@@ -60,6 +62,10 @@ export default function StripeCheckout() {
 
       const session = await response.json()
 
+      if (!response.ok) {
+        throw new Error(session.error || 'Failed to create checkout session')
+      }
+
       if (session.url) {
         window.location.href = session.url
       } else if (session.id) {
@@ -69,8 +75,9 @@ export default function StripeCheckout() {
           await stripe.redirectToCheckout({ sessionId: session.id })
         }
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error creating checkout session:', error)
+      setError(error.message || 'Failed to start checkout. Please try again.')
     } finally {
       setIsProcessing(false)
     }
@@ -82,6 +89,12 @@ export default function StripeCheckout() {
         <h2 className="text-3xl font-bold mb-4">Choose Your Plan</h2>
         <p className="text-gray-600">Start with a 14-day free trial, no credit card required</p>
       </div>
+
+      {error && (
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-center">
+          {error}
+        </div>
+      )}
 
       <div className="grid gap-6 md:grid-cols-3">
         {pricingPlans.map((plan) => (
@@ -105,7 +118,7 @@ export default function StripeCheckout() {
                   </li>
                 ))}
               </ul>
-              <Button 
+              <Button
                 onClick={() => handleCheckout(plan.priceId)}
                 disabled={isProcessing}
                 className="w-full"

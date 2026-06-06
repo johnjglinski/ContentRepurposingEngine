@@ -1,0 +1,52 @@
+[
+  {
+    "id": "social-media-prompts",
+    "name": "30 AI Prompts for Social Media Managers",
+    "price": 700,
+    "stripePriceId": "NEXT_PUBLIC_STORE_SOCIAL_PROMPTS_PRICE_ID",
+    "description": "Ready-to-copy prompts that generate engaging social posts for Instagram, Twitter, LinkedIn, and TikTok. Save hours of content planning.",
+    "file": "/products/social-media-prompts.pdf",
+    "category": "AI Prompts",
+    "featured": true
+  },
+  {
+    "id": "content-calendar-template",
+    "name": "Content Calendar Template (Notion + Excel)",
+    "price": 900,
+    "stripePriceId": "NEXT_PUBLIC_STORE_CALENDAR_TEMPLATE_PRICE_ID",
+    "description": "Plug-and-play content calendar that organizes your entire month of content in minutes. Works with Notion or Excel.",
+    "file": "/products/content-calendar-template.zip",
+    "category": "Templates",
+    "featured": true
+  },
+  {
+    "id": "freelancer-rate-calculator",
+    "name": "Freelancer Rate Calculator + Contract Template",
+    "price": 1200,
+    "stripePriceId": "NEXT_PUBLIC_STORE_RATE_CALCULATOR_PRICE_ID",
+    "description": "Calculate your ideal freelance rate and get a professional contract template to protect yourself.",
+    "file": "/products/freelancer-rate-calculator.pdf",
+    "category": "Templates",
+    "featured": false
+  },
+  {
+    "id": "side-hustle-prompts",
+    "name": "Side Hustle Idea Generator (50 Prompts)",
+    "price": 700,
+    "stripePriceId": "NEXT_PUBLIC_STORE_SIDE_HUSTLE_PROMPTS_PRICE_ID",
+    "description": "AI-powered prompts to generate profitable side hustle ideas tailored to your skills and interests.",
+    "file": "/products/side-hustle-prompts.pdf",
+    "category": "AI Prompts",
+    "featured": false
+  },
+  {
+    "id": "resume-builder-prompts",
+    "name": "Resume Builder Prompt Pack",
+    "price": 900,
+    "stripePriceId": "NEXT_PUBLIC_STORE_RESUME_BUILDER_PRICE_ID",
+    "description": "AI prompts to craft ATS-optimized resumes that pass screening and land interviews.",
+    "file": "/products/resume-builder-prompts.pdf",
+    "category": "AI Prompts",
+    "featured": true
+  }
+]

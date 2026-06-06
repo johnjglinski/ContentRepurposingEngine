@@ -1,0 +1,41 @@
+{
+  "name": "digital-product-store",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Digital product store selling AI prompt templates and productivity checklists",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "cross-env NEXT_TELEMETRY_DISABLED=1 next build",
+    "build:clean": "rimraf .next-out && cross-env NEXT_TELEMETRY_DISABLED=1 next build",
+    "start": "next start -p 3001",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@stripe/stripe-js": "^9.7.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "dotenv": "^16.3.1",
+    "lucide-react": "^0.294.0",
+    "next": "14.2.25",
+    "nodemailer": "^6.9.7",
+    "postcss": "^8",
+    "react": "^18",
+    "react-dom": "^18",
+    "stripe": "^14.9.0",
+    "tailwind-merge": "^2.0.0",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^8.0.0",
+    "cross-env": "^10.1.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.25",
+    "rimraf": "^6.1.3"
+  }
+}
