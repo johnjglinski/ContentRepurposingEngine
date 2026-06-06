@@ -7,7 +7,6 @@
   "outputDirectory": ".next",
   "framework": "nextjs",
   "regions": ["iad1"],
-  "domains": ["store.j3cfamily.studio"],
   "rewrites": [
     {
       "source": "/api/:path*",

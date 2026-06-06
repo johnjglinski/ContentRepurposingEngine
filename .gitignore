@@ -16,3 +16,5 @@ AZURE_FUNCTIONS_API/local.settings.json
 
 # Build output
 .next-out
+
+.vercel
